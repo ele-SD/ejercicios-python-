@@ -1,0 +1,218 @@
+
+:root {
+    --fondo: #ebe8f2;
+    --puntos: #cbc4dc;
+    --texto: #2b2438;
+    --acento: #6b5b8f;
+    --apagado: #7a7390;
+    --fila: rgba(255, 255, 255, 0.5);
+    --tarjeta: #2a2038;
+    --tarjeta-hover: #4b3a73;
+    --tarjeta-borde: #1a1226;
+    --input-fondo: #ffffff;
+    --input-texto: #2b2438;
+    --input-borde: #4b3a73;
+    --barra-fondo: #cfc9dc;
+    --barra-borde: #4b3a73;
+    --resultado: #5b3b9a;
+}
+
+:root[data-tema="oscuro"] {
+    --fondo: #15121c;
+    --puntos: #272234;
+    --texto: #e8e4f0;
+    --acento: #8b7bc4;
+    --apagado: #9a93b0;
+    --fila: rgba(255, 255, 255, 0.06);
+    --tarjeta: #2a2038;
+    --tarjeta-hover: #4b3a73;
+    --tarjeta-borde: #3d3350;
+    --input-fondo: #211b2e;
+    --input-texto: #e8e4f0;
+    --input-borde: #6b5b8f;
+    --barra-fondo: #1d1828;
+    --barra-borde: #4b3a73;
+    --resultado: #b79bff;
+}
+
+body {
+    margin: 0;
+    padding-bottom: 64px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: var(--texto);
+    background-color: var(--fondo);
+    background-image: radial-gradient(var(--puntos) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+}
+
+.panel {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 16px;
+}
+
+.titulo {
+    font-size: 1.15rem;
+    font-weight: normal;
+    margin: 0 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--acento);
+}
+
+/* Formularios */
+.formulario {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+input {
+    padding: 7px 9px;
+    border: 2px solid var(--input-borde);
+    background: var(--input-fondo);
+    color: var(--input-texto);
+    font-size: 0.95rem;
+}
+
+.btn-accion {
+    padding: 7px 16px;
+    background: #4c7dff;
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.btn-accion:hover {
+    background: #6f95ff;
+}
+
+.resultado {
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--resultado);
+}
+
+/* Lista estilo tabla */
+.lista {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+}
+
+.lista th {
+    text-align: left;
+    font-weight: normal;
+    color: var(--apagado);
+    padding: 4px 10px;
+}
+
+.lista td {
+    padding: 9px 10px;
+    background: var(--fila);
+}
+
+.lista tr.destacada td {
+    background: #4b3a73;
+    color: white;
+}
+
+.estrella {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #7aa2ff;
+    border: 2px solid #1a1226;
+    color: #1a1226;
+    font-size: 12px;
+}
+
+/* Resultado de la tabla de multiplicar */
+.tabla-resultado {
+    list-style: none;
+    padding: 0;
+}
+
+.tabla-resultado li {
+    background: var(--tarjeta);
+    color: white;
+    padding: 6px 12px;
+    margin-bottom: 3px;
+    border-left: 5px solid #8b5cf6;
+}
+
+/* Botones grandes del inicio */
+.menu-botones {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.boton {
+    display: block;
+    background: var(--tarjeta);
+    color: white;
+    padding: 14px 16px;
+    font-size: 1rem;
+    text-decoration: none;
+    border: 2px solid var(--tarjeta-borde);
+    border-left: 6px solid #8b5cf6;
+}
+
+.boton:hover {
+    background: var(--tarjeta-hover);
+}
+
+/* Barra inferior */
+.barra {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    background: var(--barra-fondo);
+    border-top: 3px solid var(--barra-borde);
+}
+
+.barra a,
+.barra button {
+    background: #2a2038;
+    color: white;
+    padding: 8px 14px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    font-family: inherit;
+    border: 2px solid var(--tarjeta-borde);
+    cursor: pointer;
+}
+
+.barra a:hover,
+.barra button:hover {
+    border-color: #7aa2ff;
+    color: #a9c0ff;
+}
+
+/* Botón de borrar */
+.btn-borrar {
+    margin-top: 8px;
+    padding: 7px 16px;
+    background: #8e2a5c;
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-borrar:hover {
+    background: #b0356f;
+}

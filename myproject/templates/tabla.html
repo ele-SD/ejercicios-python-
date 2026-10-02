@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1 class="titulo">Tabla de multiplicar</h1>
+
+<form method="post" class="formulario">
+    <input type="number" name="numero" placeholder="Número" required>
+    <button type="submit" class="btn-accion">Mostrar</button>
+</form>
+
+{% if filas %}
+<ul class="tabla-resultado">
+    {% for f in filas %}<li>{{ f }}</li>{% endfor %}
+</ul>
+{% endif %}
+
+<table class="lista">
+    <tr><th></th><th>Número consultado</th><th>Fecha</th></tr>
+    {% for h in historial %}
+    <tr class="{{ 'destacada' if loop.first else '' }}">
+        <td>{% if loop.first %}<span class="estrella">★</span>{% endif %}</td>
+        <td>{{ h.numero }}</td>
+        <td>{{ h.fecha }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form method="post" action="{{ url_for('borrar', ejercicio='tabla') }}"
+      onsubmit="return confirm('¿Borrar todo el historial?')">
+    <button type="submit" class="btn-borrar">Borrar tabla</button>
+</form>
+{% endblock %}

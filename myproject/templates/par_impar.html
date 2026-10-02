@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1 class="titulo">Par o impar</h1>
+
+<form method="post" class="formulario">
+    <input type="number" name="numero" placeholder="Número" required>
+    <button type="submit" class="btn-accion">Verificar</button>
+</form>
+
+{% if resultado %}
+<p class="resultado">El número es {{ resultado }}</p>
+{% endif %}
+
+<table class="lista">
+    <tr><th></th><th>Número</th><th>Resultado</th><th>Fecha</th></tr>
+    {% for h in historial %}
+    <tr class="{{ 'destacada' if loop.first else '' }}">
+        <td>{% if loop.first %}<span class="estrella">★</span>{% endif %}</td>
+        <td>{{ h.numero }}</td>
+        <td>{{ h.resultado }}</td>
+        <td>{{ h.fecha }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form method="post" action="{{ url_for('borrar', ejercicio='par_impar') }}"
+      onsubmit="return confirm('¿Borrar todo el historial?')">
+    <button type="submit" class="btn-borrar">Borrar tabla</button>
+</form>
+{% endblock %}

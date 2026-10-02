@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ejercicios Python</title>
+    <script>
+        // Se aplica antes de pintar la página para evitar el parpadeo
+        (function () {
+            var tema = localStorage.getItem("tema");
+            if (!tema) {
+                tema = window.matchMedia("(prefers-color-scheme: dark)").matches ? "oscuro" : "claro";
+            }
+            document.documentElement.setAttribute("data-tema", tema);
+        })();
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="panel">
+        {% block contenido %}{% endblock %}
+    </main>
+
+    <nav class="barra">
+        <a href="{{ url_for('inicio') }}">Inicio</a>
+        <a href="{{ url_for('par_impar') }}">Par o impar</a>
+        <a href="{{ url_for('tabla') }}">Tabla</a>
+        <a href="{{ url_for('adivina') }}">Adivina</a>
+        <button type="button" id="btn-tema" title="Cambiar tema">🌙</button>
+    </nav>
+
+    <script>
+        var boton = document.getElementById("btn-tema");
+        var raiz = document.documentElement;
+
+        function pintarIcono() {
+            boton.textContent = raiz.getAttribute("data-tema") === "oscuro" ? "☀️" : "🌙";
+        }
+
+        boton.addEventListener("click", function () {
+            var nuevo = raiz.getAttribute("data-tema") === "oscuro" ? "claro" : "oscuro";
+            raiz.setAttribute("data-tema", nuevo);
+            localStorage.setItem("tema", nuevo);
+            pintarIcono();
+        });
+
+        pintarIcono();
+    </script>
+</body>
+</html>

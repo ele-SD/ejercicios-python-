@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1 class="titulo">Ejercicios propuestos</h1>
+<div class="menu-botones">
+    <a class="boton" href="{{ url_for('par_impar') }}">1. Par o impar</a>
+    <a class="boton" href="{{ url_for('tabla') }}">2. Tabla de multiplicar</a>
+    <a class="boton" href="{{ url_for('adivina') }}">3. Adivina el número</a>
+</div>
+{% endblock %}

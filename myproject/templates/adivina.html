@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1 class="titulo">Adivina el número (1 a 100)</h1>
+
+<form method="post" class="formulario">
+    <input type="number" name="numero" min="1" max="100" placeholder="Tu intento" required>
+    <button type="submit" class="btn-accion">Probar</button>
+</form>
+
+{% if mensaje %}
+<p class="resultado">{{ mensaje }}</p>
+{% endif %}
+
+<table class="lista">
+    <tr><th></th><th>Partida</th><th>Intentos</th><th>Ganada</th></tr>
+    {% for h in historial %}
+    <tr class="{{ 'destacada' if loop.first else '' }}">
+        <td>{% if loop.first %}<span class="estrella">★</span>{% endif %}</td>
+        <td>{{ h.id }}</td>
+        <td>{{ h.intentos }}</td>
+        <td>{{ "Sí" if h.ganada else "No" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form method="post" action="{{ url_for('borrar', ejercicio='adivina') }}"
+      onsubmit="return confirm('¿Borrar todas las partidas?')">
+    <button type="submit" class="btn-borrar">Borrar tabla</button>
+</form>
+{% endblock %}
